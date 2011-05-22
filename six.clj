@@ -1,20 +1,14 @@
-(ns devlib.clojure.euler.six)
+(ns clojure-euler.six
+  (:require [clojure.contrib.math :as math]))
 
-(defn pwr
-  "calculates and number to an exponent"
-  [exp num]
-  (if (zero? exp)
-    1
-    (* num (pwr (dec exp) num))))
 
 (defn square-of-sum
   [the-seq]
-  (pwr 2
-   (reduce + the-seq)))
+  (math/expt (reduce + the-seq) 2))
 
 (defn sum-of-square
   [the-seq]
-  (reduce + (map (partial pwr 2) the-seq)))
+  (reduce + (map #(math/expt % 2) the-seq)))
 
 (do
   (- (square-of-sum (range 1 101))
