@@ -50,6 +50,29 @@
 
 ;;"Elapsed time: 99980.492802 msecs"
 ;;31626
+;;==============
+
+(defn sum-proper-divisors
+  [n]
+  (reduce + (proper-divisors n)))
+
+(defn amicable-number?
+  [n]
+  (let [n1 (sum-proper-divisors n)
+	n2 (sum-proper-divisors n1)]
+    (and (= n n2)
+	 (not (= n n1)))))
+	
+
+(defn euler21-improved
+  "find the sum of proper divisors in a range from 1 to n-1"
+  [n]
+  (apply + (filter amicable-number? (range 1 n))))
+
+;;"Elapsed time: 58853.855089 msecs"
+;;31626
+  
+
  
   
 
